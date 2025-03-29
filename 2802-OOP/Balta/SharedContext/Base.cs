@@ -1,7 +1,6 @@
-using System.Diagnostics.Contracts;
 using Balta.NotificationContext;
 
-namespace Balta.ContentContext;
+namespace Balta.SharedContext;
 
 public class Base : Notifiable
 {
