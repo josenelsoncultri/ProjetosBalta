@@ -12,6 +12,6 @@ FROM Course
 INNER JOIN Category ON (Category.Id = Course.CategoryId)
 INNER JOIN Author ON (Author.Id = Course.AuthorId)
 WHERE Active = 1
-
+GO
 
 SELECT * FROM vwCourses ORDER BY CreateDate DESC
