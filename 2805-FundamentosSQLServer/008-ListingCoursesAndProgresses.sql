@@ -1,6 +1,6 @@
 SELECT
-	Student.Name AS Student,
 	Course.Title AS Course,
+	Student.Name AS Student,
 	StudentCourse.Progress,
 	StudentCourse.LastUpdateDate
 FROM Course
