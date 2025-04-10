@@ -1,33 +1,25 @@
 ﻿using Blog.Models;
+using Blog.Repositories;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using Microsoft.Data.SqlClient;
 
 const string CONNECTION_STRING = "Server=NITRO-JN\\MSSQLSERVER2022;Database=Blog;User Id=balta;Password=balta;Trust Server Certificate=True";
 
-//ReadUsers();
+ReadUsers();
 //ReadUser();
 //CreateUser();
-// UpdateUser();
-DeleteUser();
+//UpdateUser();
+//DeleteUser();
 
 static void ReadUsers()
 {
-    using var connection = new SqlConnection(CONNECTION_STRING);
-    var users = connection.GetAll<User>();
-
+    var repository = new UserRepository();
+    var users = repository.Get();
     foreach (var user in users)
     {
         Console.WriteLine(user.Name);
     }
-}
-
-static void ReadUser()
-{
-    using var connection = new SqlConnection(CONNECTION_STRING);
-    var user = connection.Get<User>(1);
-
-    Console.WriteLine(user.Name);
 }
 
 static void CreateUser()
