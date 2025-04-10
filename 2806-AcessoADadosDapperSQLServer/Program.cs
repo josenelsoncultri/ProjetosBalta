@@ -5,62 +5,32 @@ using Dapper.Contrib.Extensions;
 using Microsoft.Data.SqlClient;
 
 const string CONNECTION_STRING = "Server=NITRO-JN\\MSSQLSERVER2022;Database=Blog;User Id=balta;Password=balta;Trust Server Certificate=True";
+using var connection = new SqlConnection(CONNECTION_STRING);
+connection.Open();
 
-ReadUsers();
-//ReadUser();
-//CreateUser();
-//UpdateUser();
-//DeleteUser();
+ReadUsers(connection);
+ReadRoles(connection);
 
-static void ReadUsers()
+connection.Close();
+
+static void ReadUsers(SqlConnection connection)
 {
-    var repository = new UserRepository();
+    var repository = new UserRepository(connection);
     var users = repository.Get();
+
     foreach (var user in users)
     {
         Console.WriteLine(user.Name);
     }
 }
 
-static void CreateUser()
+static void ReadRoles(SqlConnection connection)
 {
-    using var connection = new SqlConnection(CONNECTION_STRING);
-    var user = new User() 
+    var repository = new RoleRepository(connection);
+    var roles = repository.Get();
+
+    foreach (var role in roles)
     {
-        Bio = "Equipe balta.io",
-        Email = "hello@balta.io",
-        Image = "https://...",
-        Name = "Equipe balta.io",
-        PasswordHash = "hash",
-        Slug = "equipe-balta"
-    };
-
-    connection.Insert<User>(user);
-    Console.WriteLine("Cadastro realizado com sucesso!");
-}
-
-static void UpdateUser()
-{
-    using var connection = new SqlConnection(CONNECTION_STRING);
-    var user = new User() 
-    {
-        Id = 2,
-        Bio = "Equipe | balta.io",
-        Email = "hello@balta.io",
-        Image = "https://...",
-        Name = "Equipe de suporte balta.io",
-        PasswordHash = "hash",
-        Slug = "equipe-balta"
-    };
-
-    connection.Update<User>(user);
-    Console.WriteLine("Cadastro atualizado com sucesso!");
-}
-
-static void DeleteUser()
-{
-    using var connection = new SqlConnection(CONNECTION_STRING);
-    var user = connection.Get<User>(2);
-    connection.Delete<User>(user);
-    Console.WriteLine("Cadastro excluído com sucesso!");
+        Console.WriteLine(role.Name);
+    }
 }
