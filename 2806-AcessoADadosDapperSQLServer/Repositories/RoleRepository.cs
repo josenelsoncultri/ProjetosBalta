@@ -1,6 +1,7 @@
 using Blog.Models;
 using Dapper.Contrib.Extensions;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace Blog.Repositories;
 
@@ -12,12 +13,36 @@ public class RoleRepository(SqlConnection connection)
 
     public Role Get(int id) => _connection.Get<Role>(id);
 
-    public void Insert(Role role) => _connection.Insert(role);  
-    public void Update(Role role) => _connection.Update(role);
-
-    public void Remove(int id)
+    public void Create(Role role)
     {
-        var Role = _connection.Get<Role>(id);
-        _connection.Delete(Role);
+        role.Id = 0;
+        _connection.Insert(role);
+    }
+
+    public void Update(Role role)
+    {
+        if (role.Id != 0)
+        {
+            _connection.Update(role);
+        }
+    }
+
+    public void Delete(Role role)
+    {
+        if (role.Id != 0)
+        {
+            _connection.Delete(role);
+        }
+    }
+
+    public void Delete(int id)
+    {
+        if (id == 0)
+        {
+            return;
+        }
+
+        var role = _connection.Get<Role>(id);
+        _connection.Delete(role);
     }
 }
