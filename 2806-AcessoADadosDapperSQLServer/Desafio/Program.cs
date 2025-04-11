@@ -1,6 +1,4 @@
-﻿using Blog.Models;
-using Blog.Repositories;
-using Blog.Utils;
+﻿using Blog.Screens.TagScreens;
 using Microsoft.Data.SqlClient;
 
 const string CONNECTION_STRING = "Server=NITRO-JN\\MSSQLSERVER2022;Database=Blog;User Id=balta;Password=balta;Trust Server Certificate=True";
@@ -8,46 +6,33 @@ using var connection = new SqlConnection(CONNECTION_STRING);
 
 connection.Open();
 
-RunCreateMethods(connection);
-RunReadMethods(connection);
-RunUpdateMethods(connection);
-RunReadMethods(connection);
-RunDeleteMethods(connection);
+Load();
 
+Console.ReadKey();
 connection.Close();
 
-static void RunCreateMethods(SqlConnection connection)
-{ 
-    var createMethods = new CreateMethods(connection);
-
-    createMethods.CreateUser();
-    createMethods.CreateRole();
-    createMethods.CreateTag();
-}
-
-static void RunReadMethods(SqlConnection connection)
+static void Load()
 {
-    var readMethods = new ReadMethods(connection);
+    Console.Clear();
+    Console.WriteLine("========== BLOG ==========");
+    Console.WriteLine("O que deseja fazer?");
+    Console.WriteLine("1 -> Gestão de usuário");
+    Console.WriteLine("2 -> Gestão de perfil");
+    Console.WriteLine("3 -> Gestão de categoria");
+    Console.WriteLine("4 -> Gestão de tag");
+    Console.WriteLine("5 -> Vincular perfil/usuário");
+    Console.WriteLine("6 -> Vincular post/tag");
+    Console.WriteLine("7 -> Relatórios");
+    Console.WriteLine("Nenhuma opção -> Sair");
 
-    readMethods.ReadUsers();
-    readMethods.ReadRoles();
-    readMethods.ReadTags();
-}
+    short option = 0;
+    short.TryParse(Console.ReadLine()!, out option);
 
-static void RunUpdateMethods(SqlConnection connection)
-{ 
-    var updateMethods = new UpdateMethods(connection);
-
-    updateMethods.UpdateUser();
-    updateMethods.UpdateRole();
-    updateMethods.UpdateTag();
-}
-
-static void RunDeleteMethods(SqlConnection connection)
-{ 
-    var deleteMethods = new DeleteMethods(connection);
-
-    deleteMethods.DeleteUser();
-    deleteMethods.DeleteRole();
-    deleteMethods.DeleteTag();
+    switch (option)
+    {
+        case 0: return;
+        case 4: MenuTagScreen.Load(); break;
+        default: Load(); break;
+    }
+    Load();
 }
