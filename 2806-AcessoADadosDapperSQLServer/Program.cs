@@ -1,7 +1,6 @@
 ﻿using Blog.Models;
 using Blog.Repositories;
-using Dapper;
-using Dapper.Contrib.Extensions;
+using Blog.Utils;
 using Microsoft.Data.SqlClient;
 
 const string CONNECTION_STRING = "Server=NITRO-JN\\MSSQLSERVER2022;Database=Blog;User Id=balta;Password=balta;Trust Server Certificate=True";
@@ -9,8 +8,13 @@ using var connection = new SqlConnection(CONNECTION_STRING);
 
 connection.Open();
 
+var createMethods = new CreateMethods(connection);
+
+createMethods.CreateUser();
 ReadUsers(connection);
+createMethods.CreateRole();
 ReadRoles(connection);
+createMethods.CreateTag();
 ReadTags(connection);
 
 connection.Close();
