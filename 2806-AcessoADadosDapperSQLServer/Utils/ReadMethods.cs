@@ -10,12 +10,17 @@ public class ReadMethods(SqlConnection connection)
 
     public void ReadUsers()
     {
-        var repository = new Repository<User>(_connection);
-        var users = repository.Get();
+        var repository = new UserRepository(_connection);
+        var users = repository.GetWithRoles();
 
         foreach (var user in users)
         {
             Console.WriteLine(user.Name);
+
+            foreach (var role in user.Roles)
+            {
+                Console.WriteLine($"- {role.Name}");
+            }
         }
     }
 
