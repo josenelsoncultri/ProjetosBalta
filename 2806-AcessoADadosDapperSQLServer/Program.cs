@@ -8,13 +8,9 @@ using var connection = new SqlConnection(CONNECTION_STRING);
 
 connection.Open();
 
-var createMethods = new CreateMethods(connection);
-
-createMethods.CreateUser();
+RunCreateMethods(connection);
 ReadUsers(connection);
-createMethods.CreateRole();
 ReadRoles(connection);
-createMethods.CreateTag();
 ReadTags(connection);
 
 connection.Close();
@@ -50,4 +46,13 @@ static void ReadTags(SqlConnection connection)
     {
         Console.WriteLine(tag.Name);
     }
+}
+
+static void RunCreateMethods(SqlConnection connection)
+{ 
+    var createMethods = new CreateMethods(connection);
+
+    createMethods.CreateUser();
+    createMethods.CreateRole();
+    createMethods.CreateTag();
 }
