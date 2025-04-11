@@ -11,21 +11,21 @@ public class DeleteMethods(SqlConnection connection)
     public void DeleteUser()
     {
         var repository = new Repository<User>(_connection);
-        var user = repository.Get().First();
+        var user = repository.Get().Last();
         repository.Delete(user);
     }
 
     public void DeleteRole()
     {
         var repository = new Repository<Role>(_connection);
-        var role = repository.Get().First();
+        var role = repository.Get().Last();
         repository.Delete(role);
     }
 
     public void DeleteTag()
     {
         var repository = new Repository<Tag>(_connection);
-        var tag = repository.Get().First();
+        var tag = repository.Get().Last();
         repository.Delete(tag);
     }
 }

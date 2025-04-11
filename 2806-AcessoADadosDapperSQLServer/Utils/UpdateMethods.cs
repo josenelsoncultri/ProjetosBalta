@@ -12,7 +12,7 @@ public class UpdateMethods(SqlConnection connection)
     {
         var repository = new Repository<User>(_connection);
 
-        var user = repository.Get().First();
+        var user = repository.Get().Last();
         user.Name = "José Nelson Cultri Atualizado";
 
         repository.Update(user);
@@ -22,7 +22,7 @@ public class UpdateMethods(SqlConnection connection)
     { 
         var repository = new Repository<Role>(_connection);
 
-        var role = repository.Get().First();
+        var role = repository.Get().Last();
         role.Name = "Administrador Atualizado";
 
         repository.Update(role);
@@ -32,7 +32,7 @@ public class UpdateMethods(SqlConnection connection)
     { 
         var repository = new Repository<Tag>(_connection);
 
-        var tag = repository.Get().First();
+        var tag = repository.Get().Last();
         tag.Name = "Blazor / MAUI Atualizado";
 
         repository.Update(tag);

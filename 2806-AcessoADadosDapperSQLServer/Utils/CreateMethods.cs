@@ -32,8 +32,8 @@ public class CreateMethods(SqlConnection connection)
         var role = new Role()
         {
             Id = 0,
-            Name = "Administrador",
-            Slug = "admin"
+            Name = "Professor",
+            Slug = "teacher"
         };
 
         repository.Create(role);
