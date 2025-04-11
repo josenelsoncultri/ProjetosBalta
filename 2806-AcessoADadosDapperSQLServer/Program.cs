@@ -9,44 +9,12 @@ using var connection = new SqlConnection(CONNECTION_STRING);
 connection.Open();
 
 RunCreateMethods(connection);
-ReadUsers(connection);
-ReadRoles(connection);
-ReadTags(connection);
+RunReadMethods(connection);
+RunUpdateMethods(connection);
+RunReadMethods(connection);
+RunDeleteMethods(connection);
 
 connection.Close();
-
-static void ReadUsers(SqlConnection connection)
-{
-    var repository = new Repository<User>(connection);
-    var users = repository.Get();
-
-    foreach (var user in users)
-    {
-        Console.WriteLine(user.Name);
-    }
-}
-
-static void ReadRoles(SqlConnection connection)
-{
-    var repository = new Repository<Role>(connection);
-    var roles = repository.Get();
-
-    foreach (var role in roles)
-    {
-        Console.WriteLine(role.Name);
-    }
-}
-
-static void ReadTags(SqlConnection connection)
-{
-    var repository = new Repository<Tag>(connection);
-    var tags = repository.Get();
-
-    foreach (var tag in tags)
-    {
-        Console.WriteLine(tag.Name);
-    }
-}
 
 static void RunCreateMethods(SqlConnection connection)
 { 
@@ -55,4 +23,31 @@ static void RunCreateMethods(SqlConnection connection)
     createMethods.CreateUser();
     createMethods.CreateRole();
     createMethods.CreateTag();
+}
+
+static void RunReadMethods(SqlConnection connection)
+{
+    var readMethods = new ReadMethods(connection);
+
+    readMethods.ReadUsers();
+    readMethods.ReadRoles();
+    readMethods.ReadTags();
+}
+
+static void RunUpdateMethods(SqlConnection connection)
+{ 
+    var updateMethods = new UpdateMethods(connection);
+
+    updateMethods.UpdateUser();
+    updateMethods.UpdateRole();
+    updateMethods.UpdateTag();
+}
+
+static void RunDeleteMethods(SqlConnection connection)
+{ 
+    var deleteMethods = new DeleteMethods(connection);
+
+    deleteMethods.DeleteUser();
+    deleteMethods.DeleteRole();
+    deleteMethods.DeleteTag();
 }

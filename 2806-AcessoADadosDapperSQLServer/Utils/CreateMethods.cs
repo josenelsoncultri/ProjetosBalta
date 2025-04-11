@@ -6,7 +6,7 @@ namespace Blog.Utils;
 
 public class CreateMethods(SqlConnection connection)
 {
-    private SqlConnection _connection = connection;
+    private readonly SqlConnection _connection = connection;
     public void CreateUser()
     {
         var repository = new Repository<User>(_connection);
