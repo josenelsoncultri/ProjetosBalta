@@ -1,5 +1,6 @@
 ﻿using Blog;
 using Blog.Screens.CategoryScreens;
+using Blog.Screens.RoleScreens;
 using Blog.Screens.TagScreens;
 using Microsoft.Data.SqlClient;
 
@@ -33,7 +34,8 @@ static void Load()
     switch (option)
     {
         case 0: return;
-        case 3: MenuCategoriesScreen.Load(); break;
+        case 2: MenuRoleScreen.Load(); break;
+        case 3: MenuCategoryScreen.Load(); break;
         case 4: MenuTagScreen.Load(); break;
         default: Load(); break;
     }

@@ -1,6 +1,6 @@
 ﻿namespace Blog.Screens.CategoryScreens;
 
-public static class MenuCategoriesScreen
+public static class MenuCategoryScreen
 {
     public static void Load()
     {
