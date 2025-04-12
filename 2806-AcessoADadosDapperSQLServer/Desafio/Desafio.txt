@@ -1,7 +1,7 @@
 >Cadastrar um Usuário
 >Cadastrar um Perfil
 >Vincular um usuário a um perfil
->Cadastrar uma categoria
+OK --- Cadastrar uma categoria
 OK --- Cadastrar uma tag
 >Cadastrar um post
 >Vincular um post a uma tag
