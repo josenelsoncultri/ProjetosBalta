@@ -26,9 +26,7 @@ static void Load()
     Console.WriteLine("3 -> Gestão de categoria");
     Console.WriteLine("4 -> Gestão de tag");
     Console.WriteLine("5 -> Gestão de posts");
-    Console.WriteLine("6 -> Vincular perfil/usuário");
-    Console.WriteLine("7 -> Vincular post/tag");
-    Console.WriteLine("8 -> Relatórios");
+    Console.WriteLine("6 -> Relatórios");
     Console.WriteLine("Nenhuma opção -> Sair");
 
     short option = 0;
@@ -44,5 +42,6 @@ static void Load()
         case 5: MenuPostScreen.Load(); break;
         default: Load(); break;
     }
+    Console.ReadKey();
     Load();
 }

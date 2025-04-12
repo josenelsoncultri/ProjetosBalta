@@ -19,7 +19,14 @@ public class User
     public override string ToString()
     {
         return $"""
-        Id: {Id} - Nome: {Name} - Email: {Email} - Bio: {Bio} - Foto: {Image} - Slug: {Slug}
+        Id: {Id}
+        Nome: {Name}
+        Email: {Email}
+        Bio: {Bio}
+        Foto: {Image}
+        Slug: {Slug}
+        {(Roles.Count != 0 ? "Perfis: " + string.Join(',', Roles.Select(x => x.Name).ToList()) : "")}
+        -------------------------------------------------------------------------
         """;
     }
 }

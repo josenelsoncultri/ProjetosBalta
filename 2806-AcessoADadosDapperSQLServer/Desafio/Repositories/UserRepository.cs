@@ -1,5 +1,6 @@
 ﻿using Blog.Models;
 using Dapper;
+using Dapper.Contrib.Extensions;
 using Microsoft.Data.SqlClient;
 
 namespace Blog.Repositories;
@@ -7,6 +8,28 @@ namespace Blog.Repositories;
 public class UserRepository(SqlConnection connection) : Repository<User>(connection)
 {
     private readonly SqlConnection _connection = connection;
+
+    public void AddRole(int UserId, int RoleId)
+    {
+        var user = _connection.Get<User>(UserId);
+        if (user is null)
+        {
+            throw new Exception("Usuário não encontrado!");
+        }
+
+        var role = _connection.Get<Role>(RoleId);
+        if (role is null)
+        {
+            throw new Exception("Perfil não encontrado!");
+        }
+
+        var query = @"INSERT INTO [UserRole] VALUES (@UserId, @RoleId)";
+        _connection.Execute(query, new 
+        { 
+            UserId,
+            RoleId
+        });
+    }
 
     public List<User> GetWithRoles()
     {

@@ -11,6 +11,7 @@ public static class MenuPostScreen
         Console.WriteLine("2 -> Listar todos os post");
         Console.WriteLine("3 -> Atualizar post");
         Console.WriteLine("4 -> Excluir post");
+        Console.WriteLine("5 -> Adicionar tag ao post");
 
         short option = 0;
         short.TryParse(Console.ReadLine()!, out option);
@@ -22,6 +23,7 @@ public static class MenuPostScreen
             case 2: ListPostsScreen.Load(); break;
             case 3: UpdatePostScreen.Load(); break;
             case 4: DeletePostScreen.Load(); break;
+            case 5: AddTagToPostScreen.Load(); break;
             default: Load(); break;
         }
     }

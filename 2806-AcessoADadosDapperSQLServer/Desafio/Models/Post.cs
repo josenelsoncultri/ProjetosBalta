@@ -1,4 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
+using System.Data;
 
 namespace Blog.Models;
 
@@ -28,7 +29,9 @@ public class Post
     {
         return $"""
         Id: {Id} - Título: {Title} - Slug: {Slug}
-        Autor: {Author.Name} - Categoria: {Category.Name}
+        {(Tags.Count != 0 ? "Tags: " + string.Join(',', Tags.Select(x => x.Name).ToList()) : "")}
+        Autor: 
+        {Author.Name} - Categoria: {Category.Name}
         Criado em: {CreateDate:dd/MM/yyyy HH:mm:ss}
         Resumo: {Summary}
         Conteúdo:

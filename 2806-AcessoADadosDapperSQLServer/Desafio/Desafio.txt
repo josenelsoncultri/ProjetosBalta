@@ -1,11 +1,11 @@
 OK --- Cadastrar um Usuário
 OK --- Cadastrar um Perfil
->Vincular um usuário a um perfil
+OK --- Vincular um usuário a um perfil
 OK --- Cadastrar uma categoria
 OK --- Cadastrar uma tag
 OK --- Cadastrar um post
->Vincular um post a uma tag
->Listar os usuários (nome, email e perfis separados por vírgula)
+OK --- Vincular um post a uma tag
+OK --- Listar os usuários (nome, email e perfis separados por vírgula)
 >Listar categorias com quantidade de posts
 >Listar tags com quantidade de posts
 >Listar os posts de uma categoria

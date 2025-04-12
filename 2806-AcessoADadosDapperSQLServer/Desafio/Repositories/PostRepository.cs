@@ -1,5 +1,6 @@
 ﻿using Blog.Models;
 using Dapper;
+using Dapper.Contrib.Extensions;
 using Microsoft.Data.SqlClient;
 
 namespace Blog.Repositories;
@@ -7,6 +8,28 @@ namespace Blog.Repositories;
 public class PostRepository(SqlConnection connection) : Repository<Post>(connection)
 {
     private readonly SqlConnection _connection = connection;
+
+    public void AddTag(int PostId, int TagId)
+    {
+        var post = _connection.Get<Post>(PostId);
+        if (post is null)
+        {
+            throw new Exception("Post não encontrado!");
+        }
+
+        var tag = _connection.Get<Tag>(TagId);
+        if (tag is null)
+        {
+            throw new Exception("Tag não encontrada!");
+        }
+
+        var query = @"INSERT INTO [PostTag] VALUES (@PostId, @TagId)";
+        _connection.Execute(query, new
+        {
+            PostId,
+            TagId
+        });
+    }
 
     public void UpdatePost(Post post)
     {

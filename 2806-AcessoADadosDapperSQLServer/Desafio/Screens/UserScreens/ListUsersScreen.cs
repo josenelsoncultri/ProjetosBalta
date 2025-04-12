@@ -18,7 +18,7 @@ public static class ListUsersScreen
     private static void List()
     {
         var repository = new UserRepository(Database.Connection);
-        var users = repository.Get();
+        var users = repository.GetWithRoles();
 
         foreach (var user in users)
         {
