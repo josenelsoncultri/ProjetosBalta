@@ -2,6 +2,7 @@
 
 namespace Blog.Models;
 
+[Table("[Post]")]
 public class Post
 {
     public int Id { get; set; }
@@ -22,4 +23,18 @@ public class Post
 
     [Write(false)]
     public List<Tag> Tags { get; set; } = [];
+
+    public override string ToString()
+    {
+        return $"""
+        Id: {Id} - Título: {Title} - Slug: {Slug}
+        Autor: {Author.Name} - Categoria: {Category.Name}
+        Criado em: {CreateDate:dd/MM/yyyy HH:mm:ss}
+        Resumo: {Summary}
+        Conteúdo:
+        {Body}
+        Última Atualização: {LastUpdateDate:dd/MM/yyyy HH:mm:ss}
+        ------------------------------------------------------------------------------------------------
+        """;
+    }
 }
