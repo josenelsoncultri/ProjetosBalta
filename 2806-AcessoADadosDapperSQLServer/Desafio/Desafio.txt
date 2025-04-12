@@ -2,7 +2,7 @@
 >Cadastrar um Perfil
 >Vincular um usuário a um perfil
 >Cadastrar uma categoria
->Cadastrar uma tag
+OK --- Cadastrar uma tag
 >Cadastrar um post
 >Vincular um post a uma tag
 >Listar os usuários (nome, email e perfis separados por vírgula)
