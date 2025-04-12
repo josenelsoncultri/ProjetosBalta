@@ -1,15 +1,16 @@
-﻿using Blog.Screens.TagScreens;
+﻿using Blog;
+using Blog.Screens.TagScreens;
 using Microsoft.Data.SqlClient;
 
 const string CONNECTION_STRING = "Server=NITRO-JN\\MSSQLSERVER2022;Database=Blog;User Id=balta;Password=balta;Trust Server Certificate=True";
-using var connection = new SqlConnection(CONNECTION_STRING);
 
-connection.Open();
+Database.Connection = new SqlConnection(CONNECTION_STRING);
+Database.Connection.Open();
 
 Load();
 
 Console.ReadKey();
-connection.Close();
+Database.Connection.Close();
 
 static void Load()
 {

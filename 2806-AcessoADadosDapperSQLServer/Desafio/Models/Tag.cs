@@ -11,4 +11,11 @@ public class Tag
 
     [Write(false)]
     public List<Post> Posts { get; set; } = [];
+
+    public override string ToString()
+    {
+        return $"""
+        Id: {Id} - Name: {Name} - Slug: {Slug}
+        """;
+    }
 }
