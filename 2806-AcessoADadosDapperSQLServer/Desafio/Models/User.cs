@@ -15,4 +15,11 @@ public class User
 
     [Write(false)]
     public List<Role> Roles { get; set; } = [];
+
+    public override string ToString()
+    {
+        return $"""
+        Id: {Id} - Nome: {Name} - Email: {Email} - Bio: {Bio} - Foto: {Image} - Slug: {Slug}
+        """;
+    }
 }

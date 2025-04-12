@@ -2,6 +2,7 @@
 using Blog.Screens.CategoryScreens;
 using Blog.Screens.RoleScreens;
 using Blog.Screens.TagScreens;
+using Blog.Screens.UserScreens;
 using Microsoft.Data.SqlClient;
 
 const string CONNECTION_STRING = "Server=NITRO-JN\\MSSQLSERVER2022;Database=Blog;User Id=balta;Password=balta;Trust Server Certificate=True";
@@ -34,6 +35,7 @@ static void Load()
     switch (option)
     {
         case 0: return;
+        case 1: MenuUserScreen.Load(); break;
         case 2: MenuRoleScreen.Load(); break;
         case 3: MenuCategoryScreen.Load(); break;
         case 4: MenuTagScreen.Load(); break;
