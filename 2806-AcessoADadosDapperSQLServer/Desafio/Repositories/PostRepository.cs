@@ -63,15 +63,18 @@ public class PostRepository(SqlConnection connection) : Repository<Post>(connect
             SELECT
             P.*,
             C.*,
-            A.*
+            A.*,
+            T.*
             FROM [Post] P
             LEFT JOIN [Category] C ON (C.[Id] = P.[CategoryId])
             LEFT JOIN [User] A ON (A.[Id] = P.[AuthorId])
+            LEFT JOIN [PostTag] PT ON (PT.[PostId] = P.[Id])
+            LEFT JOIN [Tag] T ON (T.[Id] = PT.[TagId])
         ";
 
         var posts = new List<Post>();
-        var items = _connection.Query<Post, Category, User, Post>(
-            query, (post, category, author) =>
+        var items = _connection.Query<Post, Category, User, Tag, Post>(
+            query, (post, category, author, tag) =>
             {
                 var _post = posts.FirstOrDefault(x => x.Id == post.Id);
                 if (_post is null)
@@ -79,6 +82,7 @@ public class PostRepository(SqlConnection connection) : Repository<Post>(connect
                     _post = post;
                     _post.Author = author;
                     _post.Category = category;
+                    _post.Tags.Add(tag);
 
                     posts.Add(_post);
                 }
@@ -86,11 +90,12 @@ public class PostRepository(SqlConnection connection) : Repository<Post>(connect
                 {
                     _post.Author = author;
                     _post.Category = category;
+                    _post.Tags.Add(tag);
                 }
 
                 return post;
             },
-            splitOn: "Id,Id"
+            splitOn: "Id,Id,Id"
         );
 
         return posts;

@@ -1,6 +1,7 @@
 ﻿using Blog;
 using Blog.Screens.CategoryScreens;
 using Blog.Screens.PostScreens;
+using Blog.Screens.ReportScreens;
 using Blog.Screens.RoleScreens;
 using Blog.Screens.TagScreens;
 using Blog.Screens.UserScreens;
@@ -40,6 +41,7 @@ static void Load()
         case 3: MenuCategoryScreen.Load(); break;
         case 4: MenuTagScreen.Load(); break;
         case 5: MenuPostScreen.Load(); break;
+        case 6: MenuReportScreen.Load(); break;
         default: Load(); break;
     }
     Console.ReadKey();

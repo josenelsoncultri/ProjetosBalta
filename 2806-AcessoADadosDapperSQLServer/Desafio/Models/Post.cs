@@ -30,8 +30,8 @@ public class Post
         return $"""
         Id: {Id} - Título: {Title} - Slug: {Slug}
         {(Tags.Count != 0 ? "Tags: " + string.Join(',', Tags.Select(x => x.Name).ToList()) : "")}
-        Autor: 
-        {Author.Name} - Categoria: {Category.Name}
+        Autor: {Author.Name}
+        Categoria: {Category.Name}
         Criado em: {CreateDate:dd/MM/yyyy HH:mm:ss}
         Resumo: {Summary}
         Conteúdo:
