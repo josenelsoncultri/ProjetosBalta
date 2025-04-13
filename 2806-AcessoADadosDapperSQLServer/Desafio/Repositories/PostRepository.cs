@@ -82,7 +82,11 @@ public class PostRepository(SqlConnection connection) : Repository<Post>(connect
                     _post = post;
                     _post.Author = author;
                     _post.Category = category;
-                    _post.Tags.Add(tag);
+
+                    if (tag is not null)
+                    { 
+                        _post.Tags.Add(tag);
+                    }
 
                     posts.Add(_post);
                 }
@@ -90,7 +94,11 @@ public class PostRepository(SqlConnection connection) : Repository<Post>(connect
                 {
                     _post.Author = author;
                     _post.Category = category;
-                    _post.Tags.Add(tag);
+
+                    if (tag is not null)
+                    {
+                        _post.Tags.Add(tag);
+                    }
                 }
 
                 return post;
