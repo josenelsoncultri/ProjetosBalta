@@ -23,7 +23,7 @@ public static class CreateCategoryScreen
     {
         try
         {
-            var repository = new Repository<Category>(Database.Connection);
+            var repository = new CategoryRepository(Database.Connection);
             repository.Create(category);
         }
         catch (Exception ex)

@@ -25,7 +25,7 @@ public static class UpdateCategoryScreen
     {
         try
         {
-            var repository = new Repository<Category>(Database.Connection);
+            var repository = new CategoryRepository(Database.Connection);
             repository.Update(category);
         }
         catch (Exception ex)

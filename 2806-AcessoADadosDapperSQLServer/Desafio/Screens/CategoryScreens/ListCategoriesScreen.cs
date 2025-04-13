@@ -17,7 +17,7 @@ public static class ListCategoriesScreen
 
     private static void List()
     {
-        var repository = new Repository<Category>(Database.Connection);
+        var repository = new CategoryRepository(Database.Connection);
         var categories = repository.Get();
 
         foreach (var category in categories)

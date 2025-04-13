@@ -18,7 +18,7 @@ public static class DeleteCategoryScreen
     {
         try
         {
-            var repository = new Repository<Category>(Database.Connection);
+            var repository = new CategoryRepository(Database.Connection);
             repository.Delete(Id);
         }
         catch (Exception ex)
