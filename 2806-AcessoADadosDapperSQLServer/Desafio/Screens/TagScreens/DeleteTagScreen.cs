@@ -18,7 +18,7 @@ public static class DeleteTagScreen
     {
         try
         {
-            var repository = new Repository<Tag>(Database.Connection);
+            var repository = new TagRepository(Database.Connection);
             repository.Delete(Id);
         }
         catch (Exception ex)

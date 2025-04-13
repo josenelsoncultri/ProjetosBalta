@@ -25,7 +25,7 @@ public static class UpdateTagScreen
     {
         try
         {
-            var repository = new Repository<Tag>(Database.Connection);
+            var repository = new TagRepository(Database.Connection);
             repository.Update(tag);
         }
         catch (Exception ex)

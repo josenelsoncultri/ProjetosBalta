@@ -17,7 +17,7 @@ public static class ListTagsScreen
 
     private static void List()
     {
-        var repository = new Repository<Tag>(Database.Connection);
+        var repository = new TagRepository(Database.Connection);
         var tags = repository.Get();
 
         foreach (var tag in tags)

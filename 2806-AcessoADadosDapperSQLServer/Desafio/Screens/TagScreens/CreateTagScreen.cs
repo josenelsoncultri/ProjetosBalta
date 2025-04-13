@@ -23,7 +23,7 @@ public static class CreateTagScreen
     {
         try
         {
-            var repository = new Repository<Tag>(Database.Connection);
+            var repository = new TagRepository(Database.Connection);
             repository.Create(tag);
         }
         catch (Exception ex)
